@@ -18,8 +18,18 @@ _If you want to find out more about this website (e. g. what headphones, housewo
 
 {% for mp3 in site.static_files %}
 {% if mp3.path contains 'mp3/' %}
-<a href="{{ site.baseurl }}{{ mp3.path | escape }}">{{ mp3.path | remove: "/mp3/" | remove: ".mp3"}}</a> &nbsp;<a href="{{ site.baseurl }}{{ mp3.path | escape }}" download><i class="fa fa-download" aria-hidden="true"></i></a>
+{% assign filename = mp3.path | remove: "/mp3/" | remove: ".mp3" %}
+<p>
+<a href="{{ site.baseurl }}{{ mp3.path | escape }}">{{filename}}</a> 
+{% assign speakerfile = 'mp3-contrib/ben-mosior/' | append: filename | append: '.mp3' | escape %}
+{% assign speakericon = 'mp3-contrib/ben-mosior/avatar.png' %}
+{% for file in site.static_files %}{% if file.path contains speakerfile %}
+&nbsp;<a href="{{ speakerfile }}"><img src="{{ site.baseurl }}/{{speakericon}}" width="30" height="30" /></a>
 {% endif %}
+{% endfor %}
+</p>
+{% endif %}
+
 {% endfor %}
 
 To download all MP3s from this website, feel free to use this command on your Linux console:
