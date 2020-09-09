@@ -19,8 +19,9 @@ _If you want to find out more about this website (e. g. what headphones, housewo
 {% for mp3 in site.static_files %}
 {% if mp3.path contains 'mp3/' %}
 {% assign filename = mp3.path | remove: "/mp3/" | remove: ".mp3" %}
-<p>
-<a href="{{ site.baseurl }}{{ mp3.path | escape }}">{{filename}}</a> 
+{% assign id = filename | split: " " | first %}
+<h7 id="{{id}}"><p>
+<a href="#{{id}}"><i class="fa fa-link" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="{{ site.baseurl }}{{ mp3.path | escape }}">{{filename}}</a>
 {% assign speakerfile = 'mp3-contrib/ben-mosior/' | append: filename | append: '.mp3' | escape %}
 {% assign speakericon = 'mp3-contrib/ben-mosior/avatar.png' %}
 {% for file in site.static_files %}{% if file.path contains speakerfile %}
@@ -28,6 +29,7 @@ _If you want to find out more about this website (e. g. what headphones, housewo
 {% endif %}
 {% endfor %}
 </p>
+</h7>
 {% endif %}
 
 {% endfor %}
@@ -44,4 +46,13 @@ _Taken and adopted from <https://askubuntu.com/a/549368>._
 Here you can find some awesome resources about Wardley Maps: <http://list.wardleymaps.com>
 
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 {% include open-embed.html %}
+
+
