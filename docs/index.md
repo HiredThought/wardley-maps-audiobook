@@ -22,6 +22,7 @@ _If you want to find out more about this website (e. g. what headphones, housewo
 {% assign id = filename | split: "- " | last | replace: " ", "-" | downcase %}
 <p>
 <a href="#{{id | escape}}" name="{{id | escape}}"><i class="fa fa-link" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="{{ site.baseurl }}{{ mp3.path | escape }}">{{filename}}</a>
+{% comment %}This is a hack because there is currently only one speaker. But must be fixed soon.{% endcomment %}
 {% assign speakerfile = 'mp3-contrib/ben-mosior/' | append: filename | append: '.mp3' | escape %}
 {% assign speakericon = 'mp3-contrib/ben-mosior/avatar.png' %}
 {% for file in site.static_files %}{% if file.path contains speakerfile %}
